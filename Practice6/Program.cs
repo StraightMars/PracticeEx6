@@ -30,9 +30,10 @@ namespace Practice6
             }
             return list;
         }
-        static int SubsequenceLength(List<double> list)
+        static void SubsequenceLength(List<double> list, out double lastElem, out int count)
         {
-            int count = 1;
+            lastElem = double.MinValue;
+            count = 1;
             int secCount = 1;
             for (int i = 1; i < list.Count; i++)
             {
@@ -44,12 +45,12 @@ namespace Practice6
                     {
                         count = secCount;
                         secCount = 1;
+                        lastElem = list[i - 1];
                     }
                     else
                         secCount = 1;
                 }
             }
-            return count;
         }
         static void Main(string[] args)
         {
@@ -93,8 +94,11 @@ namespace Practice6
             Rec(list, N);
             Console.WriteLine("Ваша последовательность: ");
             ShowList(list);
-            int length = SubsequenceLength(list);
-            Console.WriteLine("Длина максимальной возрастающей подпоследовательности: {0}", length);
+            SubsequenceLength(list, out double lastElem, out int count);
+            Console.WriteLine("Длина максимальной возрастающей подпоследовательности: {0}", count);
+            Console.WriteLine("Последний элемент максимальной возрастающей последовательности: {0}\n(В том случае," +
+                " если в последовательности несколько подпоследовательностей одинаковой длины, последний элемент " +
+                "берется у первой подпоследовательности)", lastElem);
         }
     }
 }
