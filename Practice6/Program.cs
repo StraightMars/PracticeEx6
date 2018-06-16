@@ -30,6 +30,27 @@ namespace Practice6
             }
             return list;
         }
+        static int SubsequenceLength(List<double> list)
+        {
+            int count = 1;
+            int secCount = 1;
+            for (int i = 1; i < list.Count; i++)
+            {
+                if (list[i] > list[i - 1])
+                    secCount++;
+                else
+                {
+                    if (count < secCount)
+                    {
+                        count = secCount;
+                        secCount = 1;
+                    }
+                    else
+                        secCount = 1;
+                }
+            }
+            return count;
+        }
         static void Main(string[] args)
         {
             double a1, a2, a3;
@@ -72,6 +93,8 @@ namespace Practice6
             Rec(list, N);
             Console.WriteLine("Ваша последовательность: ");
             ShowList(list);
+            int length = SubsequenceLength(list);
+            Console.WriteLine("Длина максимальной возрастающей подпоследовательности: {0}", length);
         }
     }
 }
