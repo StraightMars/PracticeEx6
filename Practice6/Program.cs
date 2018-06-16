@@ -8,6 +8,15 @@ namespace Practice6
 {
     class Program
     {
+        static void ShowList(List <double> list)
+        {
+            int c = 0;
+            foreach (double elem in list)
+            {
+                c++;
+                Console.WriteLine("{0}-й элемент последовательности: {1}", c, elem);
+            }
+        }
         static List<double> Rec(List<double> list, int N)
         {
             if (list.Count < N)
@@ -53,13 +62,16 @@ namespace Practice6
                 ok = Int32.TryParse(Console.ReadLine(), out N);
                 if (!ok)
                     Console.WriteLine("Ошибка! Введите натуральное число!");
+                if (N <= 3)
+                {
+                    Console.WriteLine("Ошибка. Введите последовательность, большую 3.");
+                    ok = false;
+                }
             } while (!ok);
             List<double> list = new List<double>() { a1, a2, a3 };
-            if (N == 3)
-                Console.WriteLine("Получившаяся последовательность: ", list);
-            if (N == 2)
-                Console.WriteLine()
             Rec(list, N);
+            Console.WriteLine("Ваша последовательность: ");
+            ShowList(list);
         }
     }
 }
