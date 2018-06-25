@@ -24,7 +24,7 @@ namespace Practice6
                 double a1 = list[list.Count - 3];
                 double a2 = list[list.Count - 2];
                 double a3 = list[list.Count - 1];
-                double a = ((a3 + a2) / 2) - a1;
+                double a = ((a3 + a2) / 2) - a1;    
                 list.Add(a);
                 Rec(list, N);
             }
@@ -96,9 +96,12 @@ namespace Practice6
             ShowList(list);
             SubsequenceLength(list, out double lastElem, out int count);
             Console.WriteLine("Длина максимальной возрастающей подпоследовательности: {0}", count);
-            Console.WriteLine("Последний элемент максимальной возрастающей последовательности: {0}\n(В том случае," +
-                " если в последовательности несколько подпоследовательностей одинаковой длины, последний элемент " +
-                "берется у первой подпоследовательности)", lastElem);
+            Console.WriteLine("Последний элемент максимальной возрастающей последовательности: {0}", lastElem);
+            Console.ForegroundColor = ConsoleColor.DarkRed;
+            Console.WriteLine("(В том случае, если в последовательности несколько подпоследовательностей одинаковой длины, " +
+                "последний элемент берется у первой подпоследовательности).");
+            Console.ResetColor();
+            Console.ReadLine();
         }
     }
 }
